@@ -1,5 +1,8 @@
 def call(String aws_account_id, String region, String ecr_repoName){
 
+                    def currentDate = new Date().format('yyyyMMdd')
+                    def currentTime = new Date().format('HHmmss')
+                    def imageTag = "${currentDate}-${currentTime}-${env.BUILD_ID}"
   
 sh """
 docker build -t ${ecr_repoName} .
